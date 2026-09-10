@@ -17,7 +17,7 @@
 
 Codex Wake is an event-driven task watcher designed for Codex. It offloads polling for CI/CD pipelines, model training runs, cluster jobs, and other long-running tasks to an independent background daemon. When the task finishes, it delivers the results back to the original session using `codex queue`, waking Codex to continue processing.
 
-> **Supported environments**: Codex CLI (TUI) and VS Code extension (**desktop App is not supported**).
+> **Supported environments**: Codex CLI (TUI) and VS Code extension.
 
 ---
 
@@ -31,7 +31,7 @@ When you have Codex submit a cluster job or GitHub Action that takes hours to co
 2. **Wasted tokens**: Repeated status checks force the model to keep reading query outputs and deciding whether to keep waiting. These zero-information exchanges consume tokens and bloat subsequent turn contexts.
 3. **"Fake work" breaks focus**: The interface constantly shows Codex is working, but clicking in reveals it just ran another status check. Worse, it sometimes drifts off to investigate "why the polling script is still waiting," straying from the real task.
 
-**Codex's compute should be spent on thinking and coding, not stuck acting as a "human timer" in an infinite loop.**
+**Codex's compute should be spent on thinking and coding, not stuck acting in an infinite loop.**
 
 ---
 
