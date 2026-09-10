@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codex-wake session start-hook",
+            "timeout": 5,
+            "statusMessage": "Registering Codex Wake session..."
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "codex-wake session end-hook",
+            "timeout": 3,
+            "statusMessage": "Releasing Codex Wake session..."
+          }
+        ]
+      }
+    ]
+  }
+}

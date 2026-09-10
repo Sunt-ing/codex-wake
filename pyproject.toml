@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-wake"
+version = "0.1.0.dev0"
+description = "Wake the right Codex session when external work finishes."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Sunt-ing" }]
+keywords = ["codex", "automation", "notifications", "developer-tools"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["websockets>=15,<18", "pexpect>=4.9; sys_platform == 'darwin'"]
+
+[project.urls]
+Homepage = "https://github.com/Sunt-ing/codex-wake"
+Repository = "https://github.com/Sunt-ing/codex-wake"
+
+[project.scripts]
+codex-wake = "codex_wake.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+codex_wake = [
+  "bundled_plugins/codex-wake/.codex-plugin/plugin.json",
+  "bundled_plugins/codex-wake/hooks/hooks.json",
+  "bundled_plugins/codex-wake/skills/codex-wake/SKILL.md",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

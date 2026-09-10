@@ -1,0 +1,22 @@
+{
+  "name": "codex-wake",
+  "version": "0.1.0",
+  "description": "Register live Codex sessions for reliable external wake events.",
+  "author": {
+    "name": "Sunt-ing",
+    "url": "https://github.com/Sunt-ing"
+  },
+  "homepage": "https://github.com/Sunt-ing/codex-wake",
+  "repository": "https://github.com/Sunt-ing/codex-wake",
+  "license": "MIT",
+  "keywords": ["codex", "automation", "events"],
+  "interface": {
+    "displayName": "Codex Wake",
+    "shortDescription": "Wake Codex when external work finishes.",
+    "longDescription": "Registers Codex session lifecycle so external events return to the exact live thread.",
+    "developerName": "Sunt-ing",
+    "category": "Productivity",
+    "capabilities": ["Automation"],
+    "defaultPrompt": ["Check whether Codex Wake is healthy."]
+  }
+}

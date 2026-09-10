@@ -1,0 +1,35 @@
+name: Tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, macos-15-intel, windows-latest]
+        python: ['3.11', '3.14']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install .
+      - run: python -m unittest discover -s tests -v
+      - name: Exercise real launchd lifecycle
+        if: runner.os == 'macOS' && matrix.python == '3.11'
+        env:
+          CODEX_WAKE_MACOS_E2E: '1'
+        run: python -m unittest discover -s tests -p test_macos_integration.py -k launchd_delivery -v
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install ruff==0.16.6 build
+      - run: ruff check src tests
+      - run: ruff format --check src tests
+      - run: python -m build
